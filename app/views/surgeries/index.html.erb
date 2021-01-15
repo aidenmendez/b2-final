@@ -1,7 +1,7 @@
 <h1>Surgeries</h1>
 <% @surgeries.each do |surgery| %>
   <section id="surgery-section-<%= surgery.id %>">
-  <h2><%= surgery.title %></h2>
+  <h2><%= link_to surgery.title, surgery_path(surgery.id) %></h2>
   <ul>
   <% surgery.doctors.each do |doctor| %>
     <li><%= doctor.name %></li>

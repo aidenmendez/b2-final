@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "As a visitor" do
-  describe "when I visit a surgery's index page" do
+  describe "when I visit the surgery index page" do
     before(:each) do
       @hospital1 = Hospital.create!(name: "Seattle Grace")
       @doctor1 = Doctor.create!(hospital_id: @hospital1.id, name: "Philip McGrew", specialty:"Cardiac", university: "University of Washington")
@@ -36,6 +36,13 @@ RSpec.describe "As a visitor" do
         expect(page).to have_content(@doctor1.name)
         expect(page).to have_content(@doctor1.name)
       end
+    end
+
+    it "I can click on any surgery title to take me to that surgery’s show page" do
+      visit surgeries_path
+
+      click_link(@surgery1.title)
+      expect(current_path).to eq(surgery_path(@surgery1.id))
     end
   end
 end
