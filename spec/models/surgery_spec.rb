@@ -21,8 +21,8 @@ RSpec.describe Surgery, type: :model do
       results = @surgery1.find_others
       expected_results = [@surgery2, @surgery4]
 
-      expect(results).to eq(expected_results)
-      expect(results).to not_include(@surgery4)
+      expect(results.to_a).to eq(expected_results)
+      expect(results.to_a).not_to include(@surgery3)
     end
   end
 end
