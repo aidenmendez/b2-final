@@ -1,0 +1,29 @@
+<h1>Surgery Number <%= @surgery.id %></h1>
+<h3>Title: <%= @surgery.title %></h3>
+<h3>Room number: <%= @surgery.operating_room_number %></h3>
+
+<section id="other-surgeries-section">
+<h2>Other surgeries happening this day of the week:</h2>
+<% @other_surgeries.each do |other| %>
+  <%= other.title %>
+<% end %>
+</section>
+
+<section id="surgery-doctors-section">
+<h2>Doctors</h2>
+<ul>
+<% @surgery.doctors.each do |doctor| %>
+  <li><%= doctor.name %></li>
+<% end %>
+</ul>
+</section>
+
+<section id="add-doctor-section">
+<h2>Add Doctor to this Surgery</h2>
+<%= form_with model: @surgery, url: surgery_path(@surgery.id), local: true do |i| %>
+  <%= i.label :name, "Name" %>
+  <%= i.text_field :name %>
+
+  <%= i.submit "Add" %>
+<% end %>
+</section>
