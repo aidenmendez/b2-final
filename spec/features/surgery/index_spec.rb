@@ -26,13 +26,13 @@ RSpec.describe "As a visitor" do
     it "And for each surgery I see the names of all doctors performing that surgery" do
       visit surgeries_path
 
-      within("sergury-section=#{@sergery1.id}") do
+      within("#surgery-section-#{@surgery1.id}") do
         expect(page).to have_content(@doctor1.name)
       end
-      within("sergury-section=#{@sergery2.id}") do
+      within("#surgery-section-#{@surgery2.id}") do
         expect(page).to have_content(@doctor2.name)
       end
-      within("sergury-section=#{@sergery3.id}") do
+      within("#surgery-section-#{@surgery3.id}") do
         expect(page).to have_content(@doctor1.name)
         expect(page).to have_content(@doctor1.name)
       end

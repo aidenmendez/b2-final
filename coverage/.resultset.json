@@ -1,0 +1,61 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/aidenmendez/Turing/2mod/final_assessment/b2-final/app/models/hospital.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/aidenmendez/Turing/2mod/final_assessment/b2-final/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/aidenmendez/Turing/2mod/final_assessment/b2-final/app/models/doctor.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/aidenmendez/Turing/2mod/final_assessment/b2-final/app/models/surgery.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/aidenmendez/Turing/2mod/final_assessment/b2-final/app/models/doctor_surgery.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/aidenmendez/Turing/2mod/final_assessment/b2-final/app/controllers/surgeries_controller.rb": {
+        "lines": [
+          1,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/aidenmendez/Turing/2mod/final_assessment/b2-final/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      }
+    },
+    "timestamp": 1610730875
+  }
+}
