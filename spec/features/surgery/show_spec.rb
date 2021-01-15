@@ -16,25 +16,52 @@ RSpec.describe "As a visitor" do
       DoctorSurgery.create!(doctor_id: @doctor2.id, surgery_id: @surgery3.id)
     end
 
-    it "And on the surgery show page I see the title and operating room number of that surgery" do
+    it "I see the title and operating room number of that surgery" do
       visit surgery_path(@surgery1.id)
 
       expect(page).to have_content("Title: #{@surgery1.title}")
       expect(page).to have_content("Room number: #{@surgery1.operating_room_number}")
     end
 
-    it "And I see a section of the page that says 'Other surgeries happening this day of the week:'" do
+    it "I see a section of the page that says 'Other surgeries happening this day of the week:'" do
       visit surgery_path(@surgery1.id)
       within("#other-surgeries-section") do
         expect(page).to have_content("Other surgeries happening this day of the week:")
       end
     end
 
-    it "And under that header I see titles of all surgeries that happen on the same day of the week as this surgery." do
+    it "under that header I see titles of all surgeries that happen on the same day of the week as this surgery." do
       visit surgery_path(@surgery1.id)
       expect(page).to have_content("Other surgeries happening this day of the week:")
       within("#other-surgeries-section") do
         expect(page).to have_content(@surgery4.title)
+      end
+    end
+
+    it "I see a field with instructions to 'Add A Doctor To This Surgery'" do
+      visit surgery_path(@surgery1.id)
+      expect(page).to have_content("Add Doctor to this Surgery")
+
+    end
+
+    it "When I input the name of an existing Doctor into that field and I click submit, I'm taken back to that surgery's show page and I see the name of that doctor listed on the page" do
+      visit surgery_path(@surgery1.id)
+
+      within("#surgery-doctors-section") do
+        expect(page).to have_content(@doctor1.name)
+        expect(page).not_to have_content(@doctor2.name)
+      end
+
+      within("#add-doctor-section") do
+        fill_in("Name", with: @doctor2.name)
+        click_on("Add")
+      end
+
+      expect(current_path).to eq(surgery_path(@surgery1.id))
+
+      within("#surgery-doctors-section") do
+        expect(page).to have_content(@doctor1.name)
+        expect(page).to have_content(@doctor2.name)
       end
     end
   end
